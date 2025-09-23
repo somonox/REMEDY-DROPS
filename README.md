@@ -19,38 +19,38 @@ And I used Spatial Index for coordinate to improve performance of location-based
 [Add Drop](./add_drop.md)
 
 ## Database Schema
+I used PostgreSQL with PostGIS extension for spatial data support.
 
 according example, table `drop` create query should be like this:
 ```sql
-CREATE TABLE drop (
-    drop_id UUID PRIMARY KEY,
-    user_id UUID NOT NULL,
-    music_id UUID NOT NULL,
-    content TEXT NOT NULL,
-    coord POINT NOT NULL SRID 4326,
-    expires_at TIMESTAMP NOT NULL,
-    FOREIGN KEY (music_id) REFERENCES music(music_id),
-    FOREIGN KEY (user_id) REFERENCES users(user_id),
-    SPATIAL INDEX (coord)
+CREATE TABLE drops (
+    drop_id     uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+    user_id     uuid NOT NULL REFERENCES users(user_id),
+    music_id    uuid NOT NULL REFERENCES music(music_id),
+    content     text NOT NULL,
+    coord       geography(Point) NOT NULL,
+    expires_at  timestamptz NOT NULL
 );
+
+CREATE INDEX idx_drops_coord_gist ON drops USING GIST (coord);
 ```
 table `music` create query should be like this:
 ```sql
 CREATE TABLE music (
-    music_id UUID PRIMARY KEY,
-    title VARCHAR(255) NOT NULL,
-    artist VARCHAR(255) NOT NULL,
-    album_img TEXT NOT NULL,
-    time INT NOT NULL
+    music_id   uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+    title      varchar(255) NOT NULL,
+    artist     varchar(255) NOT NULL,
+    album_img  text         NOT NULL,
+    duration_seconds int    NOT NULL
 );
 ```
 table `users` create query should be like this:
 ```sql
 CREATE TABLE users (
-    user_id UUID PRIMARY KEY,
-    username VARCHAR(255) NOT NULL,
-    email VARCHAR(255) NOT NULL UNIQUE,
-    password_hash TEXT NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    user_id      uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+    username     text        NOT NULL,
+    email        text        NOT NULL UNIQUE,
+    password_hash text       NOT NULL,
+    created_at   timestamptz NOT NULL DEFAULT now()
 );
 ```
