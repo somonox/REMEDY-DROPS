@@ -33,7 +33,9 @@ dependencies {
     annotationProcessor("org.projectlombok:lombok")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
-    runtimeOnly("com.mysql:mysql-connector-j")
+    implementation("org.hibernate.orm:hibernate-spatial:6.5.2.Final")
+    runtimeOnly("org.postgresql:postgresql")
+    implementation("org.locationtech.jts:jts-core:1.19.0")
 }
 
 tasks.withType<Test> {

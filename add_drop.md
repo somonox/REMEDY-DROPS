@@ -1,7 +1,7 @@
 # /drops [POST]
 | Name            | Type    | Required | Description                      |
 |-----------------|---------|----------|----------------------------------|
-| user_id         | UUID    | O        | ID of the user creating the drop |
+| user_id         | UUID    | O        | ID of the users creating the drop |
 | music           | Object  | O        | Music information                |
 | music.title     | String  | O        | Title of the music               |
 | music.artist    | String  | O        | Artist of the music              |
