@@ -29,6 +29,7 @@ repositories {
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("org.springframework.boot:spring-boot-starter-validation")
     compileOnly("org.projectlombok:lombok")
     annotationProcessor("org.projectlombok:lombok")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
@@ -37,6 +38,7 @@ dependencies {
     // I NEED PSQL EXCEPTION
     implementation("org.postgresql:postgresql")
     implementation("org.locationtech.jts:jts-core:1.19.0")
+
 }
 
 tasks.withType<Test> {
