@@ -16,7 +16,7 @@ drops[] Item
 | Name        | Type   | Required | Description                                                    |
 | ----------- | ------ | -------- | -------------------------------------------------------------- |
 | drop\_id    | UUID   | O        | Unique identifier of the drop                                  |
-| user\_id    | UUID   | O        | Identifier of the user who created the drop                    |
+| users\_id    | UUID   | O        | Identifier of the users who created the drop                    |
 | music\_id   | UUID   | O        | Identifier of the associated music record                      |
 | content     | String | O        | Text content of the drop                                       |
 | latitude    | Float  | O        | Latitude (WGS84), range −90 to 90                              |

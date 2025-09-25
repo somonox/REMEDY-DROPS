@@ -8,9 +8,9 @@
 | Name             | Type    | Required | Description                                                    |
 | ---------------- | ------- | -------- | -------------------------------------------------------------- |
 | drop\_id         | UUID    | O        | Unique identifier of the drop                                  |
-| user             | Object  | O        | Embedded user object                                           |
-| user.user\_id    | UUID    | O        | Unique identifier of the user                                  |
-| user.username    | String  | O        | Display name of the user                                       |
+| users             | Object  | O        | Embedded users object                                           |
+| users.users\_id    | UUID    | O        | Unique identifier of the users                                  |
+| users.username    | String  | O        | Display name of the users                                       |
 | music            | Object  | O        | Embedded music object                                          |
 | music.music\_id  | UUID    | O        | Unique identifier of the music record                          |
 | music.title      | String  | O        | Title of the track                                             |
@@ -32,7 +32,7 @@
 ```json
 {
     "drop_id": "0000-0000-0000-0000-000000000000",
-    "user": {
+    "users": {
         "user_id": "0000-0000-0000-0000-000000000000",
         "username": "sampleuser"
     },
