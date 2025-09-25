@@ -1,8 +1,12 @@
 package hs.bssm.somonox.remedydrops.drops.detail.dto;
 
+import hs.bssm.somonox.remedydrops.drops.common.GeoPointDto;
+import hs.bssm.somonox.remedydrops.drops.common.MusicSummaryDto;
+import hs.bssm.somonox.remedydrops.drops.common.UserSummaryDto;
 import hs.bssm.somonox.remedydrops.drops.domain.entity.Drops;
 import hs.bssm.somonox.remedydrops.drops.domain.entity.Music;
 import hs.bssm.somonox.remedydrops.drops.domain.entity.Users;
+import org.locationtech.jts.geom.Point;
 
 public class DropDtoMapper {
     public static DropDetailResponse toDropDetailResponse(Drops drops) {
@@ -11,8 +15,7 @@ public class DropDtoMapper {
             toUserSummaryDto(drops.getUsers()),
             toMusicSummaryDto(drops.getMusic()),
             drops.getContent(),
-            drops.getCoord().getY(),
-            drops.getCoord().getX(),
+            toGeoPointDto(drops.getCoord()),
             drops.getExpiresAt()
         );
     }
@@ -31,6 +34,13 @@ public class DropDtoMapper {
         return new UserSummaryDto(
             user.getUserId(),
             user.getUsername()
+        );
+    }
+
+    public static GeoPointDto toGeoPointDto(Point geoPoint) {
+        return new GeoPointDto(
+            geoPoint.getY(),
+            geoPoint.getX()
         );
     }
 }

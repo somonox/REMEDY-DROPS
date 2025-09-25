@@ -1,5 +1,9 @@
 package hs.bssm.somonox.remedydrops.drops.detail.dto;
 
+import hs.bssm.somonox.remedydrops.drops.common.GeoPointDto;
+import hs.bssm.somonox.remedydrops.drops.common.MusicSummaryDto;
+import hs.bssm.somonox.remedydrops.drops.common.UserSummaryDto;
+
 import java.time.OffsetDateTime;
 import java.util.UUID;
 
@@ -8,8 +12,7 @@ public record DropDetailResponse(
         UserSummaryDto user,
         MusicSummaryDto music,
         String content,
-        double latitude,
-        double longitude,
+        GeoPointDto coordinates,
         OffsetDateTime expiresAt
 )
 {}

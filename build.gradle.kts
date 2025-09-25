@@ -34,7 +34,8 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
     implementation("org.hibernate.orm:hibernate-spatial:6.5.2.Final")
-    runtimeOnly("org.postgresql:postgresql")
+    // I NEED PSQL EXCEPTION
+    implementation("org.postgresql:postgresql")
     implementation("org.locationtech.jts:jts-core:1.19.0")
 }
 
